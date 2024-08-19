@@ -1,0 +1,190 @@
+body{
+    background-color:bisque;
+}
+.pageGrid{ 
+    display: grid;
+    grid-template-columns: 20% 58% 20%;
+    padding:10px;
+    gap:15px;
+    border: 1px solid black;
+    left: 10px;
+    right:10px;
+    background-color:bisque;
+    border:none;
+}
+.resourceGrid{
+    background-color: antiquewhite;
+    border: 5px groove blanchedalmond;
+    display: block;
+    grid-column: 1;
+    padding: 10px;
+    min-width: 250px;
+  }
+  .resourceGridItem{
+    display: grid;
+    grid-template-columns:100px 50px 50px 75px;
+    row-gap: 100px;
+    column-rule-style: 2px dashed black;
+    align-items: left;
+    height: 20px;
+  }
+.buildingGrid{
+    grid-column:2;
+    padding: 10px;
+    display: grid;
+    border: 1px solid black;
+    align-items: top;
+    gap: 15px 20px;
+    background-color:antiquewhite;
+    border-style: groove;
+    border-width: 5px;
+    border-color: blanchedalmond;
+    min-width: 250px;
+}
+.housingGrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 224px);
+    gap: 10px 10px;
+    margin: 0px 10px 0px 10px;
+}
+/*BUILDING HEADER*/
+.buildingHeader{
+    display:flex;
+    border-bottom: 3px solid brown;
+    padding: 3px;
+    max-width: 250px;
+    justify-content: center;
+    align-items: left;
+    margin: 25px 20px 10px 20px;
+    font-size: 18px bold;
+    border-radius: 55px;
+    height: 20px;
+    color:black;
+    
+}
+/*BUILDING BUTTON*/
+.buildingBox{
+    position: relative;
+    height: 40px;
+    width: 220px;
+    display: flex;
+    background-color: bisque;
+    border: solid 2px burlywood;
+    border-radius: 15px;
+}
+/*LOG PANE*/
+.log{
+    grid-column:3;
+    border: 5px groove blanchedalmond;
+    background-color: antiquewhite;
+    min-width: 250px;
+}
+.tabContent{
+    display:block;
+    row-gap: 12px;
+}
+.buyButton{
+    display:inline-grid;
+    grid-template-columns: 140px 40px;
+    height: 40px;
+    width: 180px;
+    padding:0px;
+    font-size: 15;
+    background:None;
+    border: none;
+    .buildingName{color:green};
+}
+.buildingName{
+    display:flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-right:none;
+    background: bisque;
+}
+.buildingCount{
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+    border: none;
+    background: transparent;
+}
+.sellButton{
+    height: 40px;
+    width: 40px;
+    padding:0;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
+    border: none;
+    background: transparent;
+}
+.wipBuyButton{
+    display:inline-grid;
+    grid-template-columns: 140px 40px;
+    height: 40px;
+    width: 180px;
+    padding:0px;
+    font-size: 15;
+    .buildingName{color:black};
+}
+.inactiveBuyButton{
+    display:inline-grid;
+    grid-template-columns: 140px 40px;
+    height: 40px;
+    width: 180px;
+    padding:0px;
+    font-size: 15;
+    border: none;
+    background: transparent;
+    .buildingName{color:red};
+}
+.sellButton:hover{
+    background-color: firebrick;
+}
+.buyButton:hover{
+    .buildingCount{background-color:rgb(90, 165, 15);}
+    .buildingName{color:green};
+}
+
+.tab{
+    overflow:hidden;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, 150px);
+    align-items: center;
+}
+.tabButton{
+    background-color: #ccc;
+    color:black;
+    padding:10px 30px;
+    border-radius: 10px;
+    gap: 10px;
+    width:auto;
+}
+.tabButton:hover,.tabButton.active:hover{
+    background-color:bisque;
+    color:black;
+    display: block;
+}
+.tab button.active {
+    background-color:lightsalmon;
+}
+
+/*TOOLTIP*/
+.tooltip{
+    position: absolute;
+    display: none;
+    cursor: default;
+    bottom:110%;
+    background-color: whitesmoke;
+    padding: 10px;
+    border: lightsalmon 2px solid;
+    border-radius: 10px;
+}
+.buildingBox:hover > .tooltip{
+    display: grid;
+    
+}

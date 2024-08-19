@@ -1,0 +1,148 @@
+<!--NOTES ON THINGS TO ADD TO RELATE TO PROJECTS
+enter name on load if no username saved
+civics tab and buttons / manual entry to adjust population work time for tasks
+some kind of search
+
+-->
+<html>    
+	<head>
+		<link rel="stylesheet" type="text/css" href="interface.css" />
+        <title>The Stone Age</title>
+
+	</head>
+	<body onload = "load()"> 
+        <div class ="headerCity">
+            <div class="cityDisplay"><span id="cityLevel">Nomads</span></div>
+            <div class="techYear"><span id="techlevel">50000 BC</span></div>
+            The goal is to reach 10,000 population!
+            Game Time: :<span id="timeMinutes">0</span>:<span id="timeSeconds">0</span>
+        </div>
+        <div class="pageGrid">
+            <div class="resourceGrid">
+                <div class="resourceGridItem">
+                    <div class="resourceGridItemHeader">Population</div>
+                    <div class="resourceGridItemDisplay"><span id="gameData.population">1</span></div>
+                    <div class="resourceGridItemCap">/<span id="gameData.maxPopulation">5</span></div>
+                    <div class="resourceGridItemPS"> </div>
+                </div>
+                <div class="resourceGridItem">
+                    <div class="resourceGridItemHeader">Land</div>
+                    <div class="resourceGridItemDisplay"><span id="gameData.usedLand">0</span></div>
+                    <div class="resourceGridItemCap">/<span id="gameData.availableLand">100</span></div>
+                    <div class="resourceGridItemPS"> </div>
+                </div>
+                <div class="resourceGridItem">
+                    <div class="resourceGridItemHeader">Manpower</div>
+
+                </div>
+                <div class="resourceGridItem">
+                    <div class="resourceGridItemHeader">Food</div>
+                    <div class="resourceGridItemDisplay"><span id="gameData.food">0</span></div>
+                    <div class="resourceGridItemCap">/<span id="gameData.maxFood">25</span></div>
+                    <div class="resourceGridItemPS"><span id="foodps">0</span>/s</div>
+                </div>
+                <div class="resourceGridItem">
+                    <div class="resourceGridItemHeader">Water</div>
+                    <div class="resourceGridItemDisplay"><span id="gameData.water">0</span></div>
+                    <div class="resourceGridItemCap">/<span id="gameData.maxWater">1</span></div>
+                    <div class="resourceGridItemPS"><span id="waterps">0</span>/s</div>
+                </div>
+                <div class="resourceGridItem">
+                    <div class="resourceGridItemHeader">Wood</div>
+                    <div class="resourceGridItemDisplay"><span id="gameData.wood">0</span></div>
+                    <div class="resourceGridItemCap">/<span id="gameData.maxWood">25</span></div>
+                    <div class="resourceGridItemPS"><span id="woodps">0</span>/s</div>
+                </div>
+            </div>   
+<!--BUILDINGS-->        
+            <div class ="buildingGrid">
+                <div class = "tab">
+                    <button class="tabButton" onclick="openTab(event,'Building')"id="defaultTab">Uruk</button>
+                    <button class="tabButton" onclick="openTab(event,'Research')">Research</button>
+                    <button class="tabButton" onclick="openTab(event,'Civics')">Civics</button>
+                    <button class="tabButton" onclick="openTab(event,'Settings')">Settings</button>
+                </div>
+                <div class="tabContent" id="Building">   
+                    <div class="buildingHeader">Land Management</div>
+                        <div class="housingGrid">
+                            <div class="buildingBox">
+                                <button class="buildingBox" onclick="clearLand(1)">Clear Land</button>
+                            </div>
+                                Max Land: <span id="maxLand">1000</span>
+                        </div>
+    <!-- HOUSING BUILDINGS-->
+                    <div class="buildingHeader">Housing</div>
+                        <div class="housingGrid">
+                            <div class="buildingBox">
+                                <button class="sellButton" onclick="house1_Sell(1)">Sell</button>
+                                <button class="buyButton" id="house1_buyButton" onclick="house1_Buy(1)"><span class="buildingName" id="house1_Name">Shelter</span><span class="buildingCount" id="gameData.house1">0</span></button>
+                                <span class="tooltip"><span id="house1_Description"></span><span><span class="buildingCost" id="gameData.house1_LandCost"></span> Land</span><span><span class="buildingCost" id="gameData.house1_WoodCost">0</span> Wood</span></span> 
+                            </div>
+                            <div class="buildingBox">
+                                <button class="sellButton" onclick="house2_Sell(1)">Sell</button>
+                                <button class="buyButton" onclick="house2_Buy(1)"><span class="buildingName">House</span><span class="buildingCount" id="gameData.house2">0</span></button>
+                                <span class="tooltip"><span id="house2_Description"></span><span><span class="buildingCost" id="gameData.house2_LandCost"></span> Land</span><span><span class="buildingCost" id="gameData.house2_WoodCost">0</span> Wood</span></span>  
+                            </div>
+                        </div>
+    <!--FOOD PRODUCTION BUILDINGS-->
+                    <div class="buildingHeader">Food</div>
+                        <div class="housingGrid">
+                            <div class ="buildingBox">
+                                <button class="sellButton" onclick="foodStorage1_Sell(1)">Sell</button>
+                                <button class="buyButton" id="foodStorage1_buyButton" onclick="foodStorage1_Buy(1)"><span class="buildingName" id="foodStorage1_Name">Granary</span><span class="buildingCount" id="gameData.foodStorage1">0</span></button>
+                                <span class="tooltip"><span id="foodStorage1_Description"></span><span><span class="buildingCost" id="foodStorage1_LandCost"></span> Land</span><span><span class="buildingCost" id="foodStorage1_WoodCost">0</span> Wood</span></span> 
+                            </div>
+                            <div class ="buildingBox">
+                                <button class="sellButton" onclick="foodStorage1_Sell(1)">Sell</button>
+                                <button class="buyButton" onclick="foodStorage1_Buy(1)"><span class="buildingName">Farm</span><span class="buildingCount" id="gameData.foodStorage1">0</span></button>
+                                <span class="tooltip"><span id="house1_Description"></span><span><span class="buildingCost" id="gameData.house1_LandCost"></span> Land</span><span><span class="buildingCost" id="gameData.house1_WoodCost">0</span> Wood</span></span> 
+                            </div>
+                            <div class ="buildingBox">
+                                <button class="sellButton" onclick="foodStorage1_Sell(1)">Sell</button>
+                                <button class="buyButton" onclick="foodStorage1_Buy(1)"><span class="buildingName">Mill</span><span class="buildingCount" id="gameData.foodStorage1">0</span></button>
+                                <span class="tooltip"><span id="house1_Description"></span><span><span class="buildingCost" id="gameData.house1_LandCost"></span> Land</span><span><span class="buildingCost" id="gameData.house1_WoodCost">0</span> Wood</span></span> 
+                            </div>
+                        </div>
+    <!--WATER PRODUCTION BUILDINGS-->
+                    <div class="buildingHeader">Water</div>
+                        <div class="housingGrid">
+                            <div class ="buildingBox">
+                                <button class="sellButton" onclick="waterStorage1_Sell(1)">Sell</button>
+                                <button class ="buyButton" onclick="waterStorage1_Buy(1)"><span class="buildingName">Well</span><span class="buildingCount" id="gameData.waterStorage1">0</span></button>
+                            </div>
+                        </div>
+    <!--WOOD PRDUCTION BUILDINGS-->
+                    <div class="buildingHeader">Wood</div>  
+                        <div class="housingGrid">
+                            <div class ="buildingBox">
+                                <button class="sellButton" onclick="woodStorage1_Sell(1)">Sell</button>
+                                <button class ="buyButton" onclick="woodStorage1_Buy(1)"><span class="buildingName">Wood Pile</span><span class="buildingCount" id="gameData.woodStorage1">0</span></button>
+                            </div>
+                            <div class ="buildingBox">
+                                <button class="sellButton" onclick="woodStorage2_Sell(1)">Sell</button>
+                                <button class ="buyButton" onclick="woodStorage2_Buy(1)"><span class="buildingName">Wood Storage</span><span class="buildingCount" id="gameData.woodStorage2">0</span></button>
+                            </div>
+                    </div>
+                </div>
+<!--RESEARCH-->
+                <div id = "Research" class = "tabcontent">
+                    <p>test</p>
+                </div>
+<!--CIVICS-->
+                <div id = "Civics" class = "tabcontent">
+                    <p>kingly</p>
+                </div>
+<!--SETTINGS-->
+                <div id = "Settings" class = "tabcontent">
+                    <p>There are none</p>
+                    <button onclick="clearSave(1)">Clear Save</button>
+                    <script type="text/javascript" src="main.js"></script>
+                </div>
+            </div>
+            <div class ="log">
+                Activity logs will eventually go here.
+            </div>  
+        </div>
+    <script>document.getElementById("defaultTab").click();</script>
+	</body>
+</html>
